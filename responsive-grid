@@ -1,0 +1,148 @@
+<div class="section-header page-width">
+    <div class="container grid-title">
+      <h2 class="">{{section.settings.grid-title}}</h2>
+    </div>
+  </div>
+      <div class="home-cards-grid page-width">
+      {% for block in section.blocks %}
+      
+           <div class="items"> 
+            <a href="{{block.settings.grid-link}}">
+                <img src="{{block.settings.grid-image | img_url: "400x400"}}" alt="">
+                <h3 class="new-title-h3">{{block.settings.grid-card-title}}</h3>
+            </a>
+           </div>
+     
+      {% endfor %}
+
+   </div>
+
+<style>
+    .home-cards-grid img {
+      width: 100%;
+      height: auto;  
+  }  
+
+  .home-cards-grid img:hover {
+     opacity: 0.3; 
+    transition: .5s ease;
+  } 
+
+  .home-cards-grid a {
+    text-decoration: none;
+  }
+  .new-title-h3 {
+    text-align: center;
+  }
+
+  .new-title-h3:hover {
+    text-decoration: underline;
+  }
+
+  
+/*
+  .home-cards-grid {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+ .items {
+   position: relative;
+   flex: 1;
+   max-width: 200px;
+   height: 200px;
+   margin: 5px;
+ }
+*/
+
+.home-cards-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
+}
+
+ 
+
+  @media (max-width: 768px) {
+    .home-cards-grid {
+       grid-template-columns: repeat(2, 1fr);
+     } 
+  }
+
+  @media (max-width: 1024px) {
+    .home-cards-grid {
+       grid-template-columns: repeat(3, 1fr);
+     } 
+  }
+
+  @media (min-width: 1025px) {
+    .home-cards-grid {
+       grid-template-columns: repeat(6, 1fr);
+     } 
+  }
+  
+</style>
+
+
+
+
+   
+{% schema %}
+  {
+
+"blocks": [
+
+  {
+	"type": "text",
+	"name": "Main Grid Collection",
+	"settings": [
+
+		{
+			"id": "grid-image",
+			"type": "image_picker",
+			"label": "Grid Image"
+
+		},		
+		{
+			"id": "grid-link",
+			"type": "url",
+			"label": "Grid Link"
+						
+		},
+
+   		{
+			"id": "grid-card-title",
+			"type": "text",
+			"label": "Grid Card Title"
+		}
+	]
+	
+
+  }
+
+],
+"presets": [
+
+				{
+					"category": "Main Grid Collection",
+					"name": "main grid collection"
+				}
+
+		   ],
+"settings": [
+
+	   	{
+			"id": "grid-title",
+			"type": "text",
+			"label": "Grid Title"
+		}
+]
+
+
+}
+
+{% endschema %}
+
+
