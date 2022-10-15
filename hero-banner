@@ -1,0 +1,64 @@
+<section class="page-width hero-banner">
+  <a href="{{ section.settings.hero-link}}">
+    <img src="{{section.settings.grid-image-desktop | img_url: "1400x480"}}" class="hero-desktop" >
+    <img src="{{section.settings.grid-image-mobile | img_url: "768x980"}}" class="hero-mobile">
+  </a>
+</section>
+
+<style>
+  .hero-mobile {
+    display: none;
+  }
+
+  .hero-desktop, .hero-mobile {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .hero-mobile {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    .hero-desktop {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+			"id": "grid-image-desktop",
+			"type": "image_picker",
+			"label": "Grid Image Desktop"
+
+	  },	
+      {
+			"id": "grid-image-mobile",
+			"type": "image_picker",
+			"label": "Grid Image Mobile"
+
+	  },
+      {
+			"id": "hero-link",
+			"type": "url",
+			"label": "Hero Link"
+						
+	 }
+    ],
+    "presets": [
+
+				{
+					"category": "Hero Banner",
+					"name": "Hero Banner"
+				}
+
+		   ]
+  }
+{% endschema %}
+
